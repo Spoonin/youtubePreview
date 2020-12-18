@@ -62,9 +62,8 @@ module.exports = {
                 "no-console": ["error", { allow: ["warn", "error"] }],
 
                 "@typescript-eslint/explicit-module-boundary-types": "off",
-                "@typescript-eslint/no-explicit-any": "off",
-                "@typescript-eslint/no-non-null-assertion": "off",
-
+                "@typescript-eslint/no-explicit-any": "error",
+                "default-case": "error",
                 "react/display-name": "off",
                 "react-hooks/exhaustive-deps": "off",
             },
