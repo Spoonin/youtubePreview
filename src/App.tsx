@@ -1,6 +1,6 @@
 import React, { useState } from "react"
 import "./App.css"
-import { SubmittableInput } from "./components/SubmittableInput"
+import { SubmitInput } from "./components/SubmitInput"
 import { buildYouTubeEmbedLink } from "./services/buildYouTubeEmbedLink"
 import { parseYouTubeLink } from "./services/parseYouTubeLink"
 
@@ -31,7 +31,7 @@ const App = () => {
 
     return (
         <div className="App">
-            <SubmittableInput
+            <SubmitInput
                 value={link}
                 onChange={onLinkChange}
                 onSubmit={onSubmit}
