@@ -22,11 +22,12 @@ export const SearchModeView: FunctionComponent<Props> = ({
     >()
     const [searchRequested, setSearchRequested] = useState<boolean>(false)
 
-    const isLoading = searchRequested && searchResults !== undefined
+    const isLoading = searchRequested && searchResults === undefined
 
     const onSearchPhraseChange = (value: string) => {
         setSearchPhrase(value)
         setSearchRequested(false)
+        setSearchResults(undefined)
     }
 
     const onSubmit = () => {
@@ -58,7 +59,7 @@ export const SearchModeView: FunctionComponent<Props> = ({
                 disabled={
                     searchPhrase.length <= SEARCH_LENGTH_THRESHOLD || isLoading
                 }
-                submitButtonName="Search"
+                submitButtonName={isLoading ? "Loading" : "Search"}
                 placeholder="Search"
             />
             {searchResults && (
