@@ -1,13 +1,11 @@
-import { YoutubeLinkModel } from "../models/YouTubeLinkModel"
+import { YoutubeLink } from "../models/YouTubeLink"
 
 const YOUTUBE_COM_HOST = "youtube.com"
 const YOUTU_BE_HOST = "youtu.be"
 const ID_PARAM_NAME = "v"
 const START_PARAM_NAME = "t"
 
-export const parseYouTubeLink = (
-    link: string
-): YoutubeLinkModel | undefined => {
+export const parseYouTubeLink = (link: string): YoutubeLink | undefined => {
     try {
         const url = new URL(link)
 
@@ -37,7 +35,7 @@ export const parseYouTubeLink = (
         }
 
         if (resourceId) {
-            return { resourceId, startAt }
+            return { videoId: resourceId, startAt }
         }
     } catch {
         return undefined
