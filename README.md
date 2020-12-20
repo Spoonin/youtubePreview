@@ -1,3 +1,13 @@
+## NOTE
+
+to be able to test you should setup your Google API KEY in the environment variable
+
+```
+export REACT_APP_GOOGLE_API_KEY=<YOUR API KEY>
+```
+
+or create `src/.env` file with text `REACT_APP_GOOGLE_API_KEY=<YOUR API KEY>`
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
