@@ -1,5 +1,7 @@
+body {
+    height: 100vh;
+}
 .App {
     text-align: center;
-    background-color: black;
     padding: 40px;
 }
