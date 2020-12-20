@@ -1,6 +1,8 @@
 import React, { FunctionComponent } from "react"
 import classnames from "classnames"
 
+import "./styles/SubmitInput.css"
+
 interface Props {
     value: string
     onChange: (value: string) => void
@@ -22,7 +24,7 @@ export const SubmitInput: FunctionComponent<Props> = ({
     disabled,
     className,
 }) => (
-    <div className={classnames(className, "submittable-input-row")}>
+    <div className={classnames(className, "submit-input-row")}>
         {validationMessage && (
             <span className="invalid-message">{validationMessage}</span>
         )}

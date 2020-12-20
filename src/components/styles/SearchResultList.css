@@ -1,0 +1,14 @@
+.search-list {
+    list-style: none;
+}
+
+.search-list-item {
+    cursor: pointer;
+    margin-bottom: 1em;
+    text-align: left;
+}
+
+.item-title {
+    color: #33c;
+    font-weight: bold;
+}

@@ -1,6 +1,8 @@
 import React, { FunctionComponent } from "react"
 import { SearchResult } from "../models/SearchResult"
 
+import "./styles/SearchResultList.css"
+
 interface Props {
     searchResults: SearchResult[]
     onItemClick: (link: string) => void

@@ -3,6 +3,8 @@ import { SubmitInput } from "../components/SubmitInput"
 import { parseYouTubeLink } from "../services/youtube/parseYouTubeLink"
 import { buildYouTubeEmbedLink } from "../services/youtube/buildYouTubeEmbedLink"
 
+import "./styles/containers.css"
+
 interface Props {
     onPreviewLinkSubmit: (link: string) => void
 }
@@ -36,12 +38,13 @@ export const LinkModeView: FunctionComponent<Props> = ({
 
     return (
         <>
-            <label>Link</label>
+            <label className="container-title">Link</label>
             <SubmitInput
                 value={link}
                 onChange={onLinkChange}
                 onSubmit={onLinkSubmit}
                 disabled={unsubmittedPreviewLink === undefined}
+                placeholder="Enter Video URL"
             />
         </>
     )

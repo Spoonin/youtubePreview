@@ -50,7 +50,7 @@ export const SearchModeView: FunctionComponent<Props> = ({
 
     return (
         <>
-            <label>Search</label>
+            <label className="container-title">Search</label>
             <SubmitInput
                 value={searchPhrase}
                 onChange={onSearchPhraseChange}
@@ -58,6 +58,8 @@ export const SearchModeView: FunctionComponent<Props> = ({
                 disabled={
                     searchPhrase.length <= SEARCH_LENGTH_THRESHOLD || isLoading
                 }
+                submitButtonName="Search"
+                placeholder="Search"
             />
             {searchResults && (
                 <SearchResultsList

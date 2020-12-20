@@ -1,5 +1,5 @@
 import React, { useState } from "react"
-import "./App.css"
+import "./styles/App.css"
 import { LinkModeView } from "./containers/LinkModeView"
 import { SearchModeView } from "./containers/SearchModeView"
 
@@ -14,9 +14,11 @@ const App = () => {
         <div className="App">
             <label>Mode</label>
             <div
-                onChange={e =>
+                className="view-switch"
+                onChange={e => {
+                    setFrameSrc(undefined)
                     setMode((e.target as HTMLSelectElement).value as Mode)
-                }
+                }}
             >
                 <label>
                     Link

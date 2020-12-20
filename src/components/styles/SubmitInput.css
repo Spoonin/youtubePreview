@@ -1,0 +1,8 @@
+.submit-input-row {
+    display: inline;
+    width: 100%;
+}
+
+.submit-input-row input {
+    width: 70%;
+}
