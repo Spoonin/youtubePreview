@@ -6,7 +6,7 @@ import { ApiError } from "../../models/ApiError"
 import { ResponseData } from "./interfaces/ResponseData"
 
 const isError = (result: ResponseData | ApiError): result is ApiError =>
-    (result as ApiError).code !== undefined
+    (result as ApiError).error !== undefined
 
 export const getSearchResults = async (
     request: SearchRequest
@@ -20,12 +20,13 @@ export const getSearchResults = async (
     }
     const result = await queryApi(request)
     if (isError(result)) {
+        const { error } = result
         return Promise.reject(
             new Error(
-                result.message ||
+                error.message ||
                     `API returned an error: ${
-                        result.status || "unknown status"
-                    } - code:${result.code || "unknown code"}`
+                        error.status || "unknown status"
+                    } - code:${error.code || "unknown code"}`
             )
         )
     } else {
