@@ -23,23 +23,28 @@ export const SubmitInput: FunctionComponent<Props> = ({
     validationMessage,
     disabled,
     className,
-}) => (
-    <div className={classnames(className, "submit-input-row")}>
-        {validationMessage && (
-            <span className="invalid-message">{validationMessage}</span>
-        )}
-        <input
-            type="text"
-            className={`text-input`}
-            value={value}
-            onChange={e => onChange(e.target.value)}
-            placeholder={placeholder}
-        ></input>
-        <button
-            disabled={validationMessage !== undefined || disabled}
-            onClick={onSubmit}
-        >
-            {submitButtonName || "Submit"}
-        </button>
-    </div>
-)
+}) => {
+    const submitDisabled = validationMessage !== undefined || disabled
+    return (
+        <div className={classnames(className, "submit-input-row")}>
+            {validationMessage && (
+                <span className="invalid-message">{validationMessage}</span>
+            )}
+            <input
+                type="text"
+                className={`text-input`}
+                value={value}
+                onChange={e => onChange(e.target.value)}
+                placeholder={placeholder}
+                onKeyDown={e => {
+                    if (e.key === "Enter" && !submitDisabled) {
+                        onSubmit()
+                    }
+                }}
+            />
+            <button disabled={submitDisabled} onClick={onSubmit}>
+                {submitButtonName || "Submit"}
+            </button>
+        </div>
+    )
+}
