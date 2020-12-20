@@ -1,4 +1,4 @@
-import { YoutubeLink } from "../models/YouTubeLink"
+import { YoutubeLink } from "../../models/YouTubeLink"
 
 const YOUTUBE_COM_HOST = "youtube.com"
 const YOUTU_BE_HOST = "youtu.be"

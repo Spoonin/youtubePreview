@@ -1,8 +1,8 @@
 import React, { useState } from "react"
 import "./App.css"
 import { SubmitInput } from "./components/SubmitInput"
-import { buildYouTubeEmbedLink } from "./services/buildYouTubeEmbedLink"
-import { parseYouTubeLink } from "./services/parseYouTubeLink"
+import { buildYouTubeEmbedLink } from "./services/youtube/buildYouTubeEmbedLink"
+import { parseYouTubeLink } from "./services/youtube/parseYouTubeLink"
 
 const App = () => {
     const [link, setLink] = useState<string>("")
