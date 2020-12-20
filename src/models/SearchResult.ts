@@ -1,5 +1,5 @@
 export interface SearchResult {
-    link: string
-    title?: string
-    description?: string
+    readonly link: string
+    readonly title?: string
+    readonly description?: string
 }

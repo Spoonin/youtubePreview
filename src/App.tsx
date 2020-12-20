@@ -1,42 +1,44 @@
 import React, { useState } from "react"
 import "./App.css"
-import { SubmitInput } from "./components/SubmitInput"
-import { buildYouTubeEmbedLink } from "./services/youtube/buildYouTubeEmbedLink"
-import { parseYouTubeLink } from "./services/youtube/parseYouTubeLink"
+import { LinkModeView } from "./containers/LinkModeView"
+import { SearchModeView } from "./containers/SearchModeView"
+
+type Mode = "link" | "search"
 
 const App = () => {
-    const [link, setLink] = useState<string>("")
-    const [frameSrcCandidate, setFrameSrcCandidate] = useState<
-        string | undefined
-    >()
+    const [mode, setMode] = useState<Mode>("link")
+
     const [frameSrc, setFrameSrc] = useState<string | undefined>()
-
-    const onLinkChange = (link: string) => {
-        setLink(link)
-        const parsed = parseYouTubeLink(link) // try parse link
-        if (parsed) {
-            const src = buildYouTubeEmbedLink(parsed)
-            setFrameSrcCandidate(src)
-        } else {
-            setFrameSrcCandidate(undefined)
-        }
-    }
-
-    const onSubmit = () => {
-        if (!frameSrcCandidate) {
-            throw new Error("frame Src is not ready")
-        }
-        setFrameSrc(frameSrcCandidate)
-    }
 
     return (
         <div className="App">
-            <SubmitInput
-                value={link}
-                onChange={onLinkChange}
-                onSubmit={onSubmit}
-                disabled={frameSrcCandidate === undefined}
-            />
+            <label>Mode</label>
+            <div
+                onChange={e =>
+                    setMode((e.target as HTMLSelectElement).value as Mode)
+                }
+            >
+                <label>
+                    Link
+                    <input
+                        type="radio"
+                        value="link"
+                        name="mode"
+                        readOnly
+                        defaultChecked
+                    />
+                </label>
+                <label>
+                    Search
+                    <input type="radio" value="search" name="mode" />
+                </label>
+            </div>
+            {mode === "link" && (
+                <LinkModeView onPreviewLinkSubmit={setFrameSrc} />
+            )}
+            {mode === "search" && (
+                <SearchModeView onPreviewLinkSubmit={setFrameSrc} />
+            )}
             {frameSrc && (
                 <iframe
                     width={560}

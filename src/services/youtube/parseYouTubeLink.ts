@@ -1,11 +1,11 @@
-import { YoutubeLink } from "../../models/YouTubeLink"
+import { VideoLink } from "../../models/VideoLink"
 
 const YOUTUBE_COM_HOST = "youtube.com"
 const YOUTU_BE_HOST = "youtu.be"
 const ID_PARAM_NAME = "v"
 const START_PARAM_NAME = "t"
 
-export const parseYouTubeLink = (link: string): YoutubeLink | undefined => {
+export const parseYouTubeLink = (link: string): VideoLink | undefined => {
     try {
         const url = new URL(link)
 

@@ -12,21 +12,32 @@ interface Props {
     className?: string
 }
 
-export const SubmitInput: FunctionComponent<Props> = props => (
-    <div className={classnames(props.className, "submittable-input-row")}>
-        {props.validationMessage && (
-            <span className="invalid-message">{props.validationMessage}</span>
+export const SubmitInput: FunctionComponent<Props> = ({
+    value,
+    onChange,
+    onSubmit,
+    placeholder,
+    submitButtonName,
+    validationMessage,
+    disabled,
+    className,
+}) => (
+    <div className={classnames(className, "submittable-input-row")}>
+        {validationMessage && (
+            <span className="invalid-message">{validationMessage}</span>
         )}
         <input
             type="text"
             className={`text-input`}
-            onChange={e => props.onChange(e.target.value)}
+            value={value}
+            onChange={e => onChange(e.target.value)}
+            placeholder={placeholder}
         ></input>
         <button
-            disabled={props.validationMessage !== undefined || props.disabled}
-            onClick={props.onSubmit}
+            disabled={validationMessage !== undefined || disabled}
+            onClick={onSubmit}
         >
-            {props.submitButtonName || "Submit"}
+            {submitButtonName || "Submit"}
         </button>
     </div>
 )

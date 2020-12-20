@@ -1,4 +1,5 @@
 export interface SearchRequest {
-    phrase: string
-    limit?: number
+    readonly phrase: string
+    readonly limit?: number
+    readonly apiKey?: string
 }
